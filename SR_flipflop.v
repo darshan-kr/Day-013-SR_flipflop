@@ -1,7 +1,9 @@
 module sr_ff(
   input [1:0]sr,
   input clk, rst,
-  output reg Q, Qbar);
+  output reg Q);
+  wire Qbar;
+  
   always@(posedge clk) begin
     if(rst)
       Q <= 1'b0;
@@ -14,6 +16,7 @@ module sr_ff(
           default:Q <= Q;
         endcase
       end
-    Qbar <= ~Q;
+   
   end
+  assign  Qbar = ~Q;
 endmodule
